@@ -13,11 +13,11 @@ pub struct HitRecord<T: Float+MulAssign> {
 
 pub struct HitResult<'a, T: Float+MulAssign> {
     pub rec: HitRecord<T>,
-    pub material: &'a Box<dyn Material<T>>,
+    pub material: &'a dyn Material<T>,
 }
 
 pub trait Hitable<T: Float+MulAssign> {
-    fn hit(&self, r: &Ray<T>, t_min: T, t_max: T) -> Option<HitResult<T>> {
+    fn hit(&self, _r: &Ray<T>, _t_min: T, _t_max: T) -> Option<HitResult<T>> {
         None
     }
 }

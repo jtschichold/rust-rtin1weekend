@@ -14,13 +14,10 @@ impl<T: Float+MulAssign> Hitable<T> for HitableList<T> {
         let mut hit_record: Option<HitResult<T>> = None;
 
         for h in &self.list {
-            match (*h).hit(r, t_min, closest_so_far) {
-                Some(t) => {
-                    closest_so_far = t.rec.t;
-                    hit_record = Some(t);
-                },
-                None => (),
-            }
+            if let Some(t) = (*h).hit(r, t_min, closest_so_far) {
+                closest_so_far = t.rec.t;
+                hit_record = Some(t);
+            };
         }
 
         hit_record

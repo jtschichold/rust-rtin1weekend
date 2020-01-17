@@ -11,7 +11,7 @@ pub struct Lambertian<T: Float+MulAssign> {
 }
 
 impl Material<f32> for Lambertian<f32> {
-    fn scatter(&self, r: &Ray<f32>, hr: &HitRecord<f32>) -> Option<ScatterResult<f32>> {
+    fn scatter(&self, _r: &Ray<f32>, hr: &HitRecord<f32>) -> Option<ScatterResult<f32>> {
         let target = hr.p + hr.normal + Vec3::random_in_unit_sphere();
         let scattered = Ray {
             origin: hr.p,

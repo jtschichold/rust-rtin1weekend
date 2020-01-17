@@ -1,5 +1,3 @@
-use rand::Rng;
-
 use crate::vec3::Vec3;
 
 pub fn reflect(v: Vec3<f32>, n: Vec3<f32>) -> Vec3<f32> {

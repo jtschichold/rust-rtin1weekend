@@ -1,3 +1,6 @@
+// we need this for consistency with
+#![allow(clippy::many_single_char_names)]
+
 use std::ops::MulAssign;
 use num_traits::Float;
 
@@ -30,7 +33,7 @@ impl<T: Float+MulAssign> Hitable<T> for Sphere<T> {
                         p,
                         normal: (p - self.center) / self.radius,
                     },
-                    material: &self.material,
+                    material: self.material.as_ref(),
                 });
             }
 
@@ -43,7 +46,7 @@ impl<T: Float+MulAssign> Hitable<T> for Sphere<T> {
                         p,
                         normal: (p - self.center) / self.radius,
                     },
-                    material: &self.material,
+                    material: self.material.as_ref(),
                 });
             }
         }

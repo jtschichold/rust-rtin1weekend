@@ -30,19 +30,13 @@ impl<T: Float + MulAssign> Vec3<T> {
         let two = T::one() + T::one();
         let vec3_unit = Vec3::new(Some([one, one, one]));
     
-        let result = loop {
+        loop {
             let iv = [
                 T::from(rng.gen::<f32>()),
                 T::from(rng.gen::<f32>()),
                 T::from(rng.gen::<f32>()),
             ];
-            if let None = iv[0] {
-                continue;
-            }
-            if let None = iv[1] {
-                continue;
-            }
-            if let None = iv[2] {
+            if iv[0].is_none() || iv[1].is_none() || iv[2].is_none() {
                 continue;
             }
 
@@ -50,9 +44,7 @@ impl<T: Float + MulAssign> Vec3<T> {
             if p.squared_length() <= one {
                 break p;
             }
-        };
-    
-        result
+        }
     }
 
     pub fn get_x(&self) -> T {
@@ -63,22 +55,27 @@ impl<T: Float + MulAssign> Vec3<T> {
         self.e[1]
     }
 
+    #[allow(dead_code)]
     pub fn get_z(&self) -> T {
         self.e[2]
     }
 
+    #[allow(dead_code)]
     pub fn get_r(&self) -> T {
         self.e[0]
     }
 
+    #[allow(dead_code)]
     pub fn get_g(&self) -> T {
         self.e[1]
     }
 
+    #[allow(dead_code)]
     pub fn get_b(&self) -> T {
         self.e[2]
     }
 
+    #[allow(dead_code)]
     pub fn make_unit_vector(&mut self) {
         let sum: T = self.e[0] * self.e[0] + self.e[1] * self.e[1] + self.e[2] * self.e[2];
         let k: T = T::one() / sum.sqrt();

@@ -69,7 +69,7 @@ fn random_scene() -> HitableList<f32> {
             if choose_mat < 0.8 {
                 // diffuse
                 result.list.push(Box::new(Sphere {
-                    center: center,
+                    center,
                     radius: 0.2,
                     material: Box::new(Lambertian {
                         albedo: Vec3::new(Some([
@@ -82,7 +82,7 @@ fn random_scene() -> HitableList<f32> {
             } else if choose_mat < 0.95 {
                 // metal
                 result.list.push(Box::new(Sphere {
-                    center: center,
+                    center,
                     radius: 0.2,
                     material: Box::new(Metal { 
                         albedo: Vec3::new(Some([0.5*(1.0+rng.gen::<f32>()), 0.5*(1.0+rng.gen::<f32>()), 0.5*(1.0+rng.gen::<f32>())])),
@@ -92,7 +92,7 @@ fn random_scene() -> HitableList<f32> {
             } else {
                 // glass
                 result.list.push(Box::new(Sphere {
-                    center: center,
+                    center,
                     radius: 0.2,
                     material: Box::new(Dielectric {
                         ref_idx: 1.52,
